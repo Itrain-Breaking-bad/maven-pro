@@ -1,25 +1,25 @@
 node {
    
    stage('Code Checkout') { // for display purposes
-    git credentialsId: 'anshu8755993241', url: 'https://github.com/itrainwarriors/maven-pro.git'  
+    git credentialsId: 'githubid', url: 'https://github.com/Itrain-Breaking-bad/maven-pro.git'  
    }
    stage('Code Build') {
-    withMaven(jdk: 'jdk', maven: 'maven') {
+    withMaven(jdk: 'jdk1.8', maven: 'Maven3.6') {
      sh 'mvn clean compile'
     }  
    }
    stage('Unit Test') {
-       withMaven(jdk: 'jdk', maven: 'maven') {
+       withMaven(jdk: 'jdk1.8', maven: 'Maven3.6') {
         sh 'mvn test'
      }  
    }
    stage('SonarQube Analysis') {
-       withMaven(jdk: 'jdk', maven: 'maven') {
+       withMaven(jdk: 'jdk1.8', maven: 'Maven3.6') {
        sh 'mvn sonar:sonar \
-          -Dsonar.projectKey=mavenexample-warrior \
-          -Dsonar.organization=anshu \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=ef0327fddb530329a89e39f72ae8c060eb96ce47  '
+        -Dsonar.projectKey=maven-pro-sanoop \
+        -Dsonar.organization=sanoop \
+  	     -Dsonar.host.url=https://sonarcloud.io \
+  	     -Dsonar.login=5a858a56ebc8d9140fae5633e34dc2c4e5f4a4d3
        }
    } 
    stage('Archive to Jfrog') {
