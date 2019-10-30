@@ -4,7 +4,7 @@ node {
     git credentialsId: 'githubid', url: 'https://github.com/Itrain-Breaking-bad/maven-pro.git'  
    }
    stage('Code Build') {
-    withMaven(jdk: 'jJDK-1.8', maven: 'Maven3.6') {
+    withMaven(jdk: 'JDK-1.8', maven: 'Maven3.6') {
      sh 'mvn clean compile'
     }  
    }
